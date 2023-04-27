@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
@@ -13,6 +14,16 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        //
+
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
+
+        $permissions = ['create post', 'read post', 'update post', 'delete post'];
+        $permissions = collect($permissions)->map(function ($permission) {
+            return ['name' => $permission, 'guard_name' => 'web'];
+        });
+
+        Permission::insert($permissions->toArray());
+
     }
 }
