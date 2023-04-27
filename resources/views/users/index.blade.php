@@ -25,6 +25,9 @@
                                     <td class="p-5 border border-slate-300">{{$user->id}}</td>
                                     <td class="p-5 border border-slate-300">{{$user->name}}</td>
                                     <td class="p-5 border border-slate-300">{{$user->email}}</td>
+                                    <td>
+                                        <a href="/users/{{$user->id}}/edit">edit</a>
+                                    </td>
                                 </tr>
                             @endforeach
 

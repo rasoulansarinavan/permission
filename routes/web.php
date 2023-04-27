@@ -22,6 +22,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/users',[\App\Http\Controllers\UserController::class, 'index']);
+Route::get('/users/{user}/edit',[\App\Http\Controllers\UserController::class, 'edit']);
+Route::patch('/users/{user}',[\App\Http\Controllers\UserController::class, 'update']);
 
 
 require __DIR__.'/auth.php';
